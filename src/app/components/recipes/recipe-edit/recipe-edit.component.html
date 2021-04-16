@@ -1,0 +1,96 @@
+<div class="row">
+	<div class="col">
+		<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+
+			<div class="row align-items-center">
+				<div class="col-12 col-lg mb-2 mb-lg-0">
+					<h1>{{ editMode ? 'Edit' : 'Add New' }} Recipe</h1>
+				</div>
+				<div class="col-auto">
+					<!-- submit button -->
+					<button class="btn btn-success mx-lg-2" type="submit" [disabled]="recipeForm.invalid">Save</button>
+
+					<!-- cancel button -->
+					<button class="btn btn-danger mx-2 mx-lg-0" type="button" (click)="onCancel()">Cancel</button>
+				</div>
+			</div>
+
+			<hr>
+
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<!-- recipe name text input -->
+						<label for="name">Name</label>
+						<input class="form-control" type="text" id="name" formControlName="name"
+							   [class]="getValidationClasses('name')">
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<!-- image path text input -->
+						<label for="imagePath">Image URL</label>
+						<input class="form-control" type="text" id="imagePath" formControlName="imagePath"
+							   [class]="getValidationClasses('imagePath')">
+					</div>
+				</div>
+			</div>
+
+			<div class="row align-items-center">
+				<div class="col-auto mx-auto mx-lg-0">
+					<!-- recipe image preview -->
+					<img class="mb-2 mb-lg-0 recipe-image" [src]="recipeForm.get('imagePath').value" alt="" #image
+						 (error)="image.src = 'assets/default-recipe.svg'">
+				</div>
+
+				<div class="col-12 col-lg">
+					<div class="form-group">
+						<!-- recipe description text input -->
+						<label for="description">Description</label>
+						<textarea class="form-control" type="text" id="description" formControlName="description"
+								  rows="6" [class]="getValidationClasses('description')"></textarea>
+					</div>
+				</div>
+			</div>
+
+			<hr>
+
+			<div class="row">
+				<div class="col mb-3">
+					<button class="btn btn-success" type="button" (click)="onAddIngredient()">Add Ingredient</button>
+					<button class="btn btn-danger mx-2" type="button"
+							(click)="recipeIngredients.clear()">Delete All</button>
+				</div>
+			</div>
+
+			<div class="row" *ngIf="recipeIngredients?.length !== 0">
+				<div class="col" formArrayName="ingredients">
+					<p>Ingredients List</p>
+					<div *ngFor="let ingredient of recipeIngredients.controls; index as i" [formGroupName]="i">
+						<div class="input-group mb-2">
+							<!-- ingredient name text input -->
+							<input class="ingredient-name form-control" type="text"
+								   placeholder="Name" formControlName="name"
+								   [class]="getValidationClasses(['ingredients', i, 'name'])">
+
+							<!-- ingredient amount number input -->
+							<input class="ingredient-amount form-control" type="number" min="1"
+								   placeholder="Amount" formControlName="amount"
+								   [class]="getValidationClasses(['ingredients', i, 'amount'])">
+
+							<!-- delete ingredient button -->
+							<div class="input-group-append">
+								<button class="btn btn-danger" type="button"
+										(click)="onDeleteIngredient(i)">Delete</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</div>

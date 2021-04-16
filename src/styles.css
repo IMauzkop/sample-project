@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Salsa&display=swap");
+
+:root {
+	--font-headers: "Salsa", "Candara semibold", "Tahoma", "Geneva", sans-serif;
+	--font-body: "Segoe UI", "Tahoma", "Geneva", sans-serif;
+	--shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+html {
+	font-size: 16px;
+	min-height: 100vh;
+}
+
+body {
+	background: hsl(35, 50%, 92%);
+	font-family: var(--font-body);
+	font-size: 1rem;
+	min-height: 100vh;
+	overflow-y: scroll;
+}
+
+a {
+	cursor: pointer;
+}
+
+a:not([href]):active {
+	color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-headers);
+	font-weight: bold;
+}
+
+button:disabled {
+	cursor: not-allowed;
+}
+
+hr {
+	border-width: 0.1rem;
+	margin: 1rem 0;
+}
+
+.dropdown-menu {
+	box-shadow: 0px 4px 4px 0px hsl(0, 0%, 50%, 0.25);
+	border: none;
+	line-height: 1.5;
+	user-select: none;
+}
+
+.dropdown-toggle::after {
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	content: "\f107";
+	border: none;
+}
+
+.dropdown-menu-open {
+	display: block;
+}
+
+.icon::before,
+.icon::after {
+	display: inline-block;
+	margin: 0 0.4rem;
+	vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+}

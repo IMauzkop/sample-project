@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top shadow-sm px-4">
+	<!-- logo -->
+	<img src="assets/brand.png" class="navbar-brand" width="25" />
+
+	<!-- navbar toggler -->
+	<button class="navbar-toggler collapsed" type="button" aria-label="Toggle navigation" (click)="toggleNavbar()">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<!-- navbar links -->
+	<div class="navbar-collapse" [class.show]="isNavbarShown">
+		<ul class="navbar-nav w-100">
+
+			<!-- link to recipes component -->
+			<li class="nav-item" routerLinkActive="active">
+				<a class="nav-link" routerLink="/recipes" (click)="isNavbarShown = false">Recipes</a>
+			</li>
+
+			<!-- link to shopping-list component -->
+			<li class="nav-item" routerLinkActive="active">
+				<a class="nav-link" routerLink="/shopping-list" (click)="isNavbarShown = false">Shopping List</a>
+			</li>
+
+			<!-- link to logout -->
+			<li class="nav-item ml-md-auto">
+				<a class="nav-link" (click)="onLogOut()">Logout</a>
+			</li>
+
+			<!-- manage dropdown-list -->
+			<li class="nav-item dropdown" [appDropdown]="manageDropdown">
+				<a class="nav-link dropdown-toggle icon">Manage</a>
+
+				<div class="dropdown-menu dropdown-menu-right" #manageDropdown>
+					<a class="dropdown-item" (click)="onSaveData()">Save Data</a>
+					<a class="dropdown-item" (click)="onFetchData()">Fetch Data</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+</nav>

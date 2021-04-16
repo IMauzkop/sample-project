@@ -1,0 +1,24 @@
+.navbar {
+	width: 100%;
+}
+
+.nav-link {
+	user-select: none;
+}
+
+@media screen and (max-width: 767.9px) {
+	.dropdown-menu {
+		border: 1px solid hsl(0deg 0% 86%);
+		box-shadow: none;
+	}
+
+	.navbar-collapse {
+		height: 0;
+		transition: height 500ms;
+		overflow-y: hidden;
+	}
+
+	.navbar-collapse.show {
+		height: 18rem;
+	}
+}

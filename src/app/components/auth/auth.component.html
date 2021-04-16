@@ -1,0 +1,45 @@
+<form class="form-signin" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+	<div class="text-center">
+		<!-- application brand -->
+		<img src="assets/brand.png" class="brand" />
+
+		<!-- form title -->
+		<h1 class="mb-5">{{ isLoginMode ? "Login" : "Sign Up" }}</h1>
+	</div>
+
+	<div class="form-label-group">
+		<!-- email text input -->
+		<input type="email" id="Email" class="form-control" placeholder="Email address"
+			   ngModel name="email" required email autofocus #email="ngModel">
+
+		<small class="form-text">Make sure it's <span
+				  [class]="{ 'invalid-text': email.invalid }">a valid</span> email.</small>
+
+		<label for="Email">Email address</label>
+	</div>
+
+	<div class="form-label-group">
+		<!-- password input -->
+		<input type="password" id="Password" class="form-control" placeholder="Password"
+			   ngModel name="password" required minlength="6" #password="ngModel">
+		<small class="form-text">Make sure it's <span
+				  [class]="{ 'invalid-text': password.invalid }">at least 6</span> characters.</small>
+		<label for="Password">Password</label>
+	</div>
+
+	<div class="form-row">
+		<div class="col-12 col-md mb-2">
+			<!-- sign-in / sign-up button -->
+			<button class="btn btn-primary btn-block btn-signIn icon"
+					[class]="{ 'loading': isLoading }"
+					[disabled]="authForm.invalid"
+					type="submit">{{ (isLoading) ? "Loading" : (isLoginMode) ? "Login" : "Sign Up" }}</button>
+		</div>
+		<div class="col-12 col-md mb-2">
+			<!-- switch mode button -->
+			<button class="btn btn-secondary btn-block" type="button"
+					(click)="onSwitchMode()">Switch to {{ isLoginMode ? "Sign Up" : "Login" }}</button>
+		</div>
+	</div>
+</form>
+<ng-template appPlaceholder></ng-template>

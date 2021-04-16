@@ -1,0 +1,11 @@
+{
+	"configurations": [
+		{
+			"type": "pwa-chrome",
+			"name": "Launch / Debug",
+			"url": "http://localhost:4200",
+			"request": "launch",
+			"skipFiles": ["<node_internals>/**", "**/node_modules/**"]
+		}
+	]
+}

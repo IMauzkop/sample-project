@@ -1,0 +1,19 @@
+<div class="row align-items-center">
+	<div class="col">
+		<h1>Recipes</h1>
+	</div>
+
+	<div class="col-auto">
+		<!--/ new recipe button /-->
+		<button class="btn btn-success" (click)="onNewRecipe()">New Recipe</button>
+	</div>
+</div>
+
+<hr>
+
+<div class="row">
+	<div class="col">
+		<!--/ recipes list /-->
+		<app-recipe-item *ngFor="let recipe of recipes; index as i" [recipe]="recipe" [index]="i"></app-recipe-item>
+	</div>
+</div>
